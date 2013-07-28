@@ -1,0 +1,120 @@
+package main;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+
+public class Application implements KeyListener,ActionListener,Runnable{
+private JGameBoard board;
+private JButtonPanel buttons;
+private Boolean ThreadRunning;
+private Thread updateThread;
+int iterationRate;
+public Application() 
+{ 
+JFrame window = new JFrame(); 
+board = new JGameBoard();
+buttons = new JButtonPanel();
+ThreadRunning = false;
+iterationRate = 1000;
+window.setLayout(new BoxLayout(window.getContentPane(),BoxLayout.Y_AXIS));
+window.setSize(550,550);
+window.add(board,BorderLayout.PAGE_START);
+window.add(buttons,BorderLayout.PAGE_END);
+window.pack();
+updateThread = new Thread(this);
+window.setVisible(true);
+window.addKeyListener(this);
+buttons.SetActionListener(this);
+
+}
+
+	public static void main(String[] args) {
+
+		@SuppressWarnings("unused")
+		Application application = new Application();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		board.Iterate();
+	
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getActionCommand() == "Next")
+			board.Iterate();
+		else if(arg0.getActionCommand() == "Start")
+		{
+		if(!ThreadRunning)	
+		{
+			updateThread.start();
+			ThreadRunning = true;
+		}
+		else 
+		{
+			ThreadRunning = false;
+		}
+		
+		}
+		else if(arg0.getActionCommand() == "comboBoxChanged")
+		{
+			@SuppressWarnings("unchecked")
+			JComboBox<String[]> box = (JComboBox<String[]>) arg0.getSource();
+			String s = (String) box.getSelectedItem();
+			switch(s)
+			{
+			case "Slow":
+				iterationRate = 1000;
+				
+			
+			case "Fast":
+				iterationRate = 750;
+			    
+			case "Fastest":
+				iterationRate = 500;
+				
+			}
+		}
+		System.out.println(arg0.getActionCommand());
+
+		
+	}
+
+	@Override
+	public void run() {
+		while(ThreadRunning)
+		{
+		board.Iterate();
+		try {
+			Thread.sleep(iterationRate);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
+		}
+	}
+
+
+
+}

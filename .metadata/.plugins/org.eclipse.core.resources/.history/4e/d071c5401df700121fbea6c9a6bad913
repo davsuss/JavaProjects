@@ -1,0 +1,29 @@
+package Main;
+
+import java.awt.List;
+import java.util.ArrayList;
+
+public class JHand {
+
+private ArrayList<Cards> hand;
+
+public JHand()
+{
+hand = new ArrayList<Cards>();
+}
+
+public void AddCard(Cards card)
+{
+	hand.Add(card);
+}
+
+public int returnValue()
+{
+return 0;
+}
+
+
+
+
+
+}

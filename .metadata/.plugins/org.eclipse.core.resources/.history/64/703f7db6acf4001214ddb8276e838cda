@@ -1,0 +1,33 @@
+import java.awt.*;
+
+import javax.swing.*;
+
+
+public class CheckerBoard extends JFrame {
+
+CheckerBoard() 
+{ 
+JLabel[][] label = new JLabel[8][8];
+JPanel panel = new JPanel(new GridLayout(8,8));
+label[1][1].setBackground(Color.BLACK);
+label[1][0].setBackground(Color.BLUE);
+for(int x = 0; x < 8; x++) 
+{
+for(int y = 0; y < 8; y++)
+{
+	panel.add(label[x][y]);
+}
+}
+
+add(panel);
+
+
+
+}
+public static void main(String[] args)
+{
+CheckerBoard board = new CheckerBoard();
+}
+
+
+}

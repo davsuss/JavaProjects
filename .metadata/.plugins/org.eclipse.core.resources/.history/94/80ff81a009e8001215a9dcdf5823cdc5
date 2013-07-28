@@ -1,0 +1,13 @@
+package GameOfLife;
+
+public class Cell {
+
+private status;
+private nextState;
+	
+
+
+
+
+	
+}

@@ -1,0 +1,33 @@
+package main;
+
+import java.awt.Graphics;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class JButtonPanel extends JPanel 
+{
+JComboBox<String> m_speedBox;
+private String[] m_speedStrings = {"Slow","Fast","Fastest"};
+private JButton m_startandStop;
+private JButton m_next;
+
+public JButtonPanel()
+{
+m_speedBox = new JComboBox<String>(m_speedStrings);
+m_startandStop = new JButton();
+m_next = new JButton();
+m_next.setSize(200,200);
+m_startandStop.setSize(200,200);
+add(m_next);
+add(m_startandStop);
+add(m_speedBox);
+
+}
+
+
+
+
+}

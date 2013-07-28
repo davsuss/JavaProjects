@@ -1,0 +1,9 @@
+package main;
+
+public class JCell {
+	
+private Boolean m_alive;
+private Boolean m_changed;
+
+
+}

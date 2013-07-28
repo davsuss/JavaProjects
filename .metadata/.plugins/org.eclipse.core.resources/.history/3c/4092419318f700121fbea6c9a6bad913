@@ -1,0 +1,10 @@
+package Main;
+
+public class JHand {
+
+	
+public int returnValue()
+{
+return 0;
+}
+}

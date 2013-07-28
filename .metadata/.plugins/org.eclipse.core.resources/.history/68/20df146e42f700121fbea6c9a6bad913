@@ -1,0 +1,8 @@
+package Main;
+
+public class JCard {
+private Boolean Visible;
+private Cards value;
+
+
+}

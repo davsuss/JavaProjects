@@ -1,0 +1,49 @@
+package main;
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+public class Frame implements MouseListener{
+static JFrame frame;
+
+public Frame()
+{ 
+frame = new JFrame("Testing Frame"); 
+frame.add(new GameBoard());
+frame.pack();
+frame.setSize(505,525);
+frame.setResizable(false);
+frame.setVisible(true);
+
+}
+
+@Override
+public void mouseClicked(MouseEvent arg0) {
+System.out.println("");
+}
+
+@Override
+public void mouseEntered(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseExited(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mousePressed(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseReleased(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+}

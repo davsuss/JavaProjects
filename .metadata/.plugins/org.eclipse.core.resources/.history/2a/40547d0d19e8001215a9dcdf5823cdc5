@@ -1,0 +1,37 @@
+package GameOfLife;
+import javax.swing.*;
+import java.awt.event.*;
+public class ButtonPanel extends JPanel 
+{
+private JButton reset;
+private JButton IterateGeneration;
+ButtonPanel() 
+{ 
+setLayout(null);
+reset = new JButton("Reset"); 
+IterateGeneration = new JButton("Iterate Generation");
+reset.setLocation(0, 300);
+IterateGeneration.setLocation(0,100);
+add(reset);
+add(IterateGeneration);
+
+}
+ButtonPanel(ActionListener lis)	
+{
+	setPreferredSize(getPreferredSize());
+	setLayout(null);
+	reset = new JButton(); 
+	IterateGeneration = new JButton();
+	reset.setLocation(0, 300);
+	IterateGeneration.setLocation(0,100);
+	add(reset);
+	add(IterateGeneration);
+	reset.addActionListener(lis);
+	IterateGeneration.addActionListener(lis);
+	setVisible(true);
+}
+	
+	
+	
+	
+}

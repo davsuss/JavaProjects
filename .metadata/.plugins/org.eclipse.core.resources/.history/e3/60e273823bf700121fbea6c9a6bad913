@@ -1,0 +1,17 @@
+package Main;
+
+import java.util.ArrayList;
+
+public class JDeck {
+public JDeck(int numberofDecks)
+{
+	
+}
+private ArrayList<Cards> m_deck;	
+private void AddADeck()
+{
+
+}
+
+
+}

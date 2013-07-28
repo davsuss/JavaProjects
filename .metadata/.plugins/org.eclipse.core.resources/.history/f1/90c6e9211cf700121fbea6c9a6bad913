@@ -1,0 +1,16 @@
+package Main;
+
+public class JHand {
+
+private ECards[] hand;
+
+public int returnValue()
+{
+return 0;
+}
+
+
+
+
+
+}

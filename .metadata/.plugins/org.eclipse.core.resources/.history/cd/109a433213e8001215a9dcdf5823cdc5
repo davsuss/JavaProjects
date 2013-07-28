@@ -1,0 +1,8 @@
+package GameOfLife;
+import java.awt.BorderLayout;
+import javax.swing.*;
+public class Frame extends JFrame {
+
+	
+	
+}

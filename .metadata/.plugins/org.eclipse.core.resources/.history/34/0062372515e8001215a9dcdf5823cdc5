@@ -1,0 +1,21 @@
+package GameOfLife;
+import javax.swing.*;
+public class ButtonPanel extends JPanel 
+{
+private JButton reset;
+private JButton IterateGeneration;
+ButtonPanel() 
+{ 
+setLayout(null);
+reset = new JButton(); 
+IterateGeneration = new JButton();
+
+
+
+}
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,36 @@
+package main;
+import javax.swing.*;
+import java.awt.*;
+public class GameBoard extends JComponent{
+	
+public void paint(Graphics g)
+{ 
+Boolean colorblack = true;
+
+for(int x = 0; x < 10;x++ )
+{
+if(colorblack)
+{
+g.setColor(Color.BLACK);
+g.fillRect(50*x,0,50,50);
+
+}
+else 
+{ 
+g.setColor(Color.WHITE);
+g.fillRect(50*(x),0,50,50);
+}
+	
+
+
+
+}
+
+
+
+
+}
+	
+	
+	
+}

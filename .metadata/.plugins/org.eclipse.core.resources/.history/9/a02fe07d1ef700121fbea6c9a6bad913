@@ -1,0 +1,33 @@
+package Main;
+
+import java.awt.List;
+import java.util.ArrayList;
+
+public class JHand {
+
+private ArrayList<Cards> hand;
+private int ChipCount;
+public JHand()
+{
+ChipCount = 0;
+hand = new ArrayList<Cards>();
+}
+
+public void addCard(Cards card)
+{
+	hand.add(card);
+}
+public void emptyHand()
+{
+hand.clear();
+}
+public int returnValue()
+{
+return 0;
+}
+
+
+
+
+
+}

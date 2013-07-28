@@ -1,0 +1,8 @@
+package GameOfLife;
+
+public class MainApplication {
+static void main(String[] args){
+Frame myframe = new Frame(); 
+myframe.setVisible(true);
+}
+}

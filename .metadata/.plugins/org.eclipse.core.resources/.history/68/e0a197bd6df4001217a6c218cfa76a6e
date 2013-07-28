@@ -1,0 +1,12 @@
+package main;
+import javax.swing.*;
+import java.awt.*;
+public class Frame{
+private JFrame frame;
+
+public Frame()
+{ 
+frame = new JFrame("Testing Frame"); 
+
+}
+}

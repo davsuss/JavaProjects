@@ -1,0 +1,21 @@
+package Main;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class JDeck {
+public JDeck(int numberofDecks)
+{
+	
+}
+private LinkedList<Cards> m_deck;	
+private void AddADeck()
+{
+for(Cards card: Cards.values())
+{
+m_deck.add(card);
+}
+}
+
+
+}

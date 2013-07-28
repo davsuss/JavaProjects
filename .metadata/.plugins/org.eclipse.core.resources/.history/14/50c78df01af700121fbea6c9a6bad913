@@ -1,0 +1,20 @@
+package Main;
+
+public enum ECards {
+TwoofHearts,
+TwoofDiamonds,
+TwoofSpades,
+TwoofClovers,
+
+ThreeofHearts,
+ThreeofDiamonds,
+ThreeofSpades,
+ThreeofClovers,
+
+FourofHearts,
+FourofDiamonds,
+FourofSpades,
+FourofClovers,
+
+
+}

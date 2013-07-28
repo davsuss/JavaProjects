@@ -1,0 +1,33 @@
+package GameOfLife;
+
+public class Cell {
+
+private boolean status;
+private boolean nextState;
+private boolean changed;
+Cell()
+{
+status = false; 
+nextState = true; 
+changed = false;
+}
+
+
+public boolean Alive() 
+{ 
+return status;
+}
+public void SetNextState(boolean next)
+{
+changed = true;
+nextState = next;
+}
+public void TickGeneration() 
+{
+if(changed)
+	status = nextState;
+changed = false;
+return;
+}
+	
+}

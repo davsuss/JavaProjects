@@ -1,0 +1,8 @@
+package GameOfLife;
+
+public class MainApplication {
+static void Main(){
+Frame myframe = new Frame(); 
+
+}
+}

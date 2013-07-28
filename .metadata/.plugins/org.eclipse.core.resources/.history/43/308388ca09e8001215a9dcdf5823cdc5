@@ -1,0 +1,20 @@
+package GameOfLife;
+
+public class Cell {
+
+private boolean status;
+private boolean nextState;
+private boolean changed;
+
+
+Cell()
+{
+status = false; 
+nextstate = 
+}
+
+
+
+
+	
+}

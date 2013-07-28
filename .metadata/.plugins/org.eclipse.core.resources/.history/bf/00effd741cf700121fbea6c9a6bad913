@@ -1,0 +1,22 @@
+package Main;
+
+import java.awt.List;
+
+public class JHand {
+
+private List hand;
+
+public JHand()
+{
+hand = new Arraylist<Cards>();
+}
+public int returnValue()
+{
+return 0;
+}
+
+
+
+
+
+}

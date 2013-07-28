@@ -1,0 +1,21 @@
+package GameOfLife;
+import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.event.*;
+public class Frame extends JFrame implements ActionListener {
+
+
+Frame(){
+setTitle("Test");	
+setSize(200,200);
+
+}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	System.out.println("Event Heard At" + System.currentTimeMillis() );
+	
+}
+	
+	
+}

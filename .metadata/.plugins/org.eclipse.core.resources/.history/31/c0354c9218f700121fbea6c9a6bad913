@@ -1,0 +1,8 @@
+package Main;
+public enum Cards
+{
+2ofHearts;
+}
+public class JDeck {
+
+}
