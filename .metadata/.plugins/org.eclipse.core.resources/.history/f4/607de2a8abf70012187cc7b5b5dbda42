@@ -13,7 +13,7 @@ hand = new LinkedList<Cards>();
 }
 public void addCard(Cards card)
 {
-hand.add(card);
+	hand.add(card);
 }
 public void emptyHand()
 {
@@ -23,9 +23,9 @@ public int getHandValue()
 {
 return 0;
 }
-public LinkedList<Cards> getHand()
-{
-return hand;
-}
+
+
+
+
 
 }

@@ -20,12 +20,16 @@ public void emptyHand()
 hand.clear();
 }
 public int getHandValue()
+public LinkedList<Cards> getHand()
+{
+	
+}
 {
 return 0;
 }
-public LinkedList<Cards> getHand()
-{
-return hand;
-}
+
+
+
+
 
 }

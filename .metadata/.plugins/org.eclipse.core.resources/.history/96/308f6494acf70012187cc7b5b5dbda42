@@ -23,9 +23,9 @@ public int getHandValue()
 {
 return 0;
 }
-public LinkedList<Cards> getHand()
-{
-return hand;
-}
+
+
+
+
 
 }

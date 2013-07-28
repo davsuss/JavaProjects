@@ -28,4 +28,9 @@ public LinkedList<Cards> getHand()
 return hand;
 }
 
+
+
+
+
+
 }
