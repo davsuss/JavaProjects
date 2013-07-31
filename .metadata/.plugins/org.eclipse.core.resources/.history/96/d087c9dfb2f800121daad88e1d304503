@@ -1,0 +1,10 @@
+package Main;
+
+public class JDealer extends JPlayer {
+private JHand hand;
+public JDealer()
+{
+hand = new JHand();
+}
+
+}

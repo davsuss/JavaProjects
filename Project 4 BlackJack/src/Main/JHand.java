@@ -2,10 +2,11 @@ package Main;
 
 
 import java.util.LinkedList;
+import enums.Cards;
 
 public class JHand {
 
-private LinkedList<Cards> hand;
+protected LinkedList<Cards> hand;
 
 public JHand()
 {
@@ -21,11 +22,23 @@ hand.clear();
 }
 public int getHandValue()
 {
-return 0;
-}
-public LinkedList<Cards> getHand()
+int value = 0;
+Cards[] cardarray = (Cards[]) hand.toArray(new Cards[hand.size()]);
+for(Cards card : cardarray)
 {
-return hand;
+value += card.getValue();
+}
+return value;
+
+}
+public int getHandSize()
+{
+return hand.size();
+}
+public Cards[] getHand()
+{
+Cards[] card = (Cards[]) hand.toArray(new Cards[hand.size()]);
+return card;
 }
 
 }

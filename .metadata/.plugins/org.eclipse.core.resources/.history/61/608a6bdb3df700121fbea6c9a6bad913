@@ -1,7 +1,0 @@
-package Main;
-
-public class Application {
-private JPlayer player;
-private JDealer dealer;
-private JDeck deck;
-}

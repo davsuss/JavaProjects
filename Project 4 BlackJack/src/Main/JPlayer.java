@@ -1,29 +1,40 @@
 package Main;
 
+import enums.Cards;
+
 public class JPlayer {
 	private int chipCount;
-	private JHand hand;
+	protected JHand hand;
 	public JPlayer()
 	{
-	chipCount = 500;
+	chipCount = 0;
 	hand = new JHand();
+	}
+	public void addCard(Cards card)
+	{
+	
+	hand.addCard(card);
+	
 	}
 	public int getChipCount()
 	{
 	return chipCount;
 	}
-	public void AddChips(int amount)
+	public void setChipCount(int amount)
 	{
-	chipCount += amount;
-	}
-	public Boolean SubtractChips(int amount)
-	{
-	chipCount -= amount;
-	return chipCount <= 0;
+	chipCount = amount;
 	}
 	public void clearHand()
 	{
 	hand.emptyHand();
 	}
-
+	public Cards[] getCards()
+	{
+		Cards[] cards = hand.getHand();
+		return cards;
+	}
+	public int getHandScore() {
+	return hand.getHandValue();
+		
+	}
 }

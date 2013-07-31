@@ -1,0 +1,36 @@
+package Main;
+
+
+import java.util.LinkedList;
+
+public class JHand {
+
+private LinkedList<Cards> hand;
+
+public JHand()
+{
+hand = new LinkedList<Cards>();
+}
+public void addCard(Cards card)
+{
+hand.add(card);
+}
+public void emptyHand()
+{
+hand.clear();
+}
+public int getHandValue()
+{
+return 0;
+}
+public int getHandSize()
+{
+return hand.size();
+}
+public Cards[] getHand()
+{
+Cards[] card = (Cards[]) hand.toArray(new Cards[hand.size()]);
+return card;
+}
+
+}

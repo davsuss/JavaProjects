@@ -3,6 +3,8 @@ package Main;
 import java.util.Collections;
 import java.util.LinkedList;
 
+import enums.Cards;
+
 public class JDeck {
 public JDeck(int numberofDecks)
 {
