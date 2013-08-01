@@ -1,0 +1,8 @@
+package Main;
+
+public class JCardPanel extends JPanel {
+public JCardPanel()
+{
+
+}
+}

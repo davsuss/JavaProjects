@@ -1,10 +1,10 @@
 package enums;
 public enum Cards {
 
-AceofHearts(11),
-AceofDiamonds(11),
-AceofSpades(11),
-AceofClovers(11),
+AceofHearts(11,"3.png"),
+AceofDiamonds(11,"4.png"),
+AceofSpades(11,"2.png"),
+AceofClovers(11,"1.png"),
 	
 TwoofHearts(2),
 TwoofDiamonds(2),
@@ -36,43 +36,51 @@ SevenofDiamonds(7),
 SevenofSpades(7),
 SevenofClovers(7),
 
-EightofHearts(8),
-EightofDiamonds(8),
-EightofSpades(8),
-EightofClovers(8),
+EightofHearts(8,""),
+EightofDiamonds(8,""),
+EightofSpades(8,""),
+EightofClovers(8,""),
 
-NineofHearts(9),
-NineofDiamonds(9),
-NineofSpades(9),
-NineofClovers(9),
+NineofHearts(9,""),
+NineofDiamonds(9,""),
+NineofSpades(9,""),
+NineofClovers(9,""),
 
-TenofHearts(10),
-TenofDiamonds(10),
-TenofSpades(10),
-TenofClovers(10),
+TenofHearts(10,""),
+TenofDiamonds(10,""),
+TenofSpades(10,""),
+TenofClovers(10,""),
 
-JackofHearts(10),
-JackofDiamonds(10),
-JackofSpades(10),
-JackofClovers(10),
+JackofHearts(10,"15.png"),
+JackofDiamonds(10,"16.png"),
+JackofSpades(10,"14.png"),
+JackofClovers(10,"13.png"),
 
-QueenofHearts(10),
-QueenofDiamonds(10),
-QueenofSpades(10),
-QueenofClovers(10),
+QueenofHearts(10,"11.png"),
+QueenofDiamonds(10,"12.png"),
+QueenofSpades(10,"10.png"),
+QueenofClovers(10,"9.png"),
 
-KingofHearts(10),
-KingofDiamonds(10),
-KingofSpades(10),
-KingofClovers(10);
+KingofHearts(10,"7.png"),
+KingofDiamonds(10,"8.png"),
+KingofSpades(10,"6.png"),
+KingofClovers(10,"5.png");
 
 private int numVal;
-Cards(int numVal)
+static String filePath = "C:/Users/David/Documents/GitHub/Development/Java/JavaProjects/Project 4 BlackJack/classic-cards"; 
+private String imageName;
+Cards(int numVal, String imageName)
 {
 this.numVal = numVal;
+this.imageName = imageName;
 }
 public int getValue()
 {
 return numVal;
 }
+public String getPath()
+{
+	
+}
+
 }

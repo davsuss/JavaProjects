@@ -1,0 +1,14 @@
+package Main;
+import javax.swing.JPanel;
+/**/
+public class JCardPanel extends JPanel {
+public JCardPanel(int x, int y, int width, int height)
+{
+
+}
+
+
+
+
+
+}

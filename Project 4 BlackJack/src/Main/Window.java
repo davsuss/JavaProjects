@@ -3,6 +3,7 @@ package Main;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,6 +13,9 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -26,11 +30,13 @@ public class Window extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JLabel lblChipCount;
 	private JButton btnNewHandgiveUp;
-	private JTextArea playerHand;
-	private JTextArea dealerHand;
+	private JButton btnHit;
+	private JButton btnStay;
 	private JPlayer player;
 	private JDealer dealer;
 	private JDeck deck;
+	
+	
 	
 	private void initWindow()
 	{
@@ -69,29 +75,18 @@ public class Window extends JFrame implements ActionListener {
 		spinner.setBounds(72, 58, 78, 20);
 		panel.add(spinner);
 		
-		JPanel Dealer = new JPanel();
-		Dealer.setBounds(278, 23, 423, 140);
-		contentPane.add(Dealer);
-		Dealer.setLayout(null);
-		
-		
-		
-		JLabel lblHand_1 = new JLabel("Hand");
-		lblHand_1.setBounds(318, 5, 46, 14);
-		Dealer.add(lblHand_1);
-		
 		JButton btnNewGame = new JButton("New Game");
 		btnNewGame.setBounds(10, 152, 154, 38);
 		contentPane.add(btnNewGame);
 		btnNewGame.addActionListener(this);
 		
-		JButton btnHit = new JButton("Hit");
+		btnHit = new JButton("Hit");
 		btnHit.setEnabled(false);
 		btnHit.setBounds(10, 251, 154, 36);
 		contentPane.add(btnHit);
 		btnHit.addActionListener(this);
 		
-		JButton btnStay = new JButton("Stay");
+		btnStay = new JButton("Stay");
 		btnStay.setEnabled(false);
 		btnStay.setBounds(10, 298, 154, 38);
 		contentPane.add(btnStay);
@@ -109,19 +104,6 @@ public class Window extends JFrame implements ActionListener {
 		contentPane.add(btnStatistics);
 		btnStatistics.addActionListener(this);
 		
-		playerHand = new JTextArea();
-		playerHand.setBounds(267, 237, 434, 148);
-		contentPane.add(playerHand);
-		
-		dealerHand = new JTextArea();
-		dealerHand.setBounds(258, 25, 155, 104);
-		Dealer.add(dealerHand);
-		
-		JLabel lblHand = new JLabel("Your Hand");
-		lblHand.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHand.setBounds(259, 213, 441, 14);
-		contentPane.add(lblHand);
-		
 	}
 	private void newGame()
 	{
@@ -131,23 +113,60 @@ public class Window extends JFrame implements ActionListener {
 	}
 	private void newHand()
 	{
-		
-	}
-	private void addCardPlayer(Cards card)
-	{
-	player.addCard(card);
+	btnHit.setEnabled(true);
+	btnStay.setEnabled(true);
+	player.clearHand();
+	player.addCard(deck.getTopCard());
+	player.addCard(deck.getTopCard());
+	dealer.addCard(deck.getTopCard());
+	dealer.addCard(deck.getTopCard());
 	updateplayerhand();
-	
+	updatedealerhand(false);
 	}
 	private void updateplayerhand()
 	{
 		//Clearing text
-		playerHand.setText(null);
+		//playerHand.setText(null);
 		Cards[] cards = player.getCards();
-		for(Cards card: cards)
-			playerHand.append(card.toString() + '\n');
-		
+		//for(Cards card: cards)
+		//	playerHand.append(card.toString() + '\n');
+		if(player.getHandScore() > 21)
+		{
+		btnHit.setEnabled(false);
+		btnStay.setEnabled(false);
+		}
 	}
+    private void stay()
+    {
+    btnHit.setEnabled(false);
+    btnStay.setEnabled(false);
+    updatedealerhand(true);
+    BufferedImage image;
+    try {
+	 image = ImageIO.read(new File("C:/Users/David/Documents/GitHub/Development/Java/JavaProjects/Project 4 BlackJack/classic-cards/1.png"));
+	 getGraphics().drawImage(image,100,100,null);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    
+    }
+	private void updatedealerhand(Boolean reveal)
+    {
+    	if(!reveal)
+    	{
+    		//dealerHand.setText(null);
+    		Cards[] cards = dealer.getCards();
+    		//dealerHand.append(cards[0].toString() + '\n');
+    	}
+    	else
+    	{
+    		//playerHand.setText(null);
+    		Cards[] cards = dealer.getCards();
+    		//for(Cards card: cards)
+    		//	playerHand.append(card.toString() + '\n');
+    	}
+    }
     public Window() {
 	player= new JPlayer();
 	dealer = new JDealer();
@@ -158,12 +177,23 @@ public class Window extends JFrame implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		System.out.println(arg0.getActionCommand());
+		
 		switch (arg0.getActionCommand()){
 		
 		case "New Game":
 		newGame();
 		break;
-		
+		case "New Hand/Give Up":
+		newHand();
+		break;
+		case "Hit":
+			player.addCard(deck.getTopCard());
+			updateplayerhand();
+		break;
+		case "Stay":
+			stay();
+		break;
 		}
 		
 	}
