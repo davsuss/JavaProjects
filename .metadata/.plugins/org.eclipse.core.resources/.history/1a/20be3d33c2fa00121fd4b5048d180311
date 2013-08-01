@@ -43,7 +43,7 @@ for(int i = 0; i < m_cards.size(); i++)
 	try {
 		System.out.print(card.getPath());
 		BufferedImage img = ImageIO.read(new File(card.getPath()));
-		g.drawImage(img,100 + i*15,100,null);
+		g.drawImage(img,100 + i*101,100,null);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -58,12 +58,12 @@ for(int i = 0; i < m_cards.size(); i++)
 }
 public void DrawCards(Cards[] cards)
 {
-m_cards.clear();
+
 for(Cards card :cards)
 {
 	m_cards.add(card);
 }
-repaint();
+revalidate();
 }
 
 

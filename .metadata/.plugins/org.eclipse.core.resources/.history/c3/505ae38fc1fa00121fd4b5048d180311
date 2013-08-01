@@ -80,7 +80,7 @@ return numVal;
 }
 public String getPath()
 {
-	return filePath +"/" +imageName;
+	return filePath + imageName;
 }
 
 }

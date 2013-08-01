@@ -144,12 +144,30 @@ public class Window extends JFrame implements ActionListener {
     btnStay.setEnabled(false);
     updatedealerhand(true);
     BufferedImage image;
-   
+    try {
+	 image = ImageIO.read(new File("C:/Users/David/Documents/GitHub/Development/Java/JavaProjects/Project 4 BlackJack/classic-cards/1.png"));
+	 getGraphics().drawImage(image,100,100,null);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     
     }
 	private void updatedealerhand(Boolean reveal)
     {
-
+    	if(!reveal)
+    	{
+    		//dealerHand.setText(null);
+    		Cards[] cards = dealer.getCards();
+    		//dealerHand.append(cards[0].toString() + '\n');
+    	}
+    	else
+    	{
+    		//playerHand.setText(null);
+    		Cards[] cards = dealer.getCards();
+    		//for(Cards card: cards)
+    		//	playerHand.append(card.toString() + '\n');
+    	}
     }
     public Window() {
 	player= new JPlayer();

@@ -1,0 +1,21 @@
+package Main;
+import javax.swing.JPanel;
+/**/
+public class JCardPanel extends JPanel {
+private int m_numberofCards;
+public JCardPanel(int x, int y, int width, int height)
+{
+
+}
+public void SetCards(Cards[] card)
+{
+if(card.isNULL())
+{
+	m_numberofCards = 0;
+}
+}
+
+
+
+
+}

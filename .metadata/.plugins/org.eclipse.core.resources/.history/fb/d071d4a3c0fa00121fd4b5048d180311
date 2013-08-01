@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import enums.Cards;
 /**/
 public class JCardPanel extends JPanel {
-private LinkedList<Cards> m_cards;
+private LinkedList m_cards;
 public JCardPanel(int x, int y, int width, int height)
 {
 setBounds(x,y,width,height);
@@ -30,9 +30,8 @@ if(card == null || card.length == 0)
 
 }
 @Override
-protected void paintComponent(Graphics g)
+public void paintComponent(Graphics g)
 {
-super.paintComponent(g);
 if(m_cards.size() == 0)
 	return;
 
@@ -41,9 +40,8 @@ for(int i = 0; i < m_cards.size(); i++)
 	Cards card =(Cards) m_cards.get(i);
 	
 	try {
-		System.out.print(card.getPath());
 		BufferedImage img = ImageIO.read(new File(card.getPath()));
-		g.drawImage(img,100 + i*15,100,null);
+		g.drawImage(img,2,1,null);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -56,15 +54,7 @@ for(int i = 0; i < m_cards.size(); i++)
 
 
 }
-public void DrawCards(Cards[] cards)
-{
-m_cards.clear();
-for(Cards card :cards)
-{
-	m_cards.add(card);
-}
-repaint();
-}
+
 
 
 }

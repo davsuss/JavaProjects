@@ -1,0 +1,24 @@
+package Main;
+import javax.swing.JPanel;
+
+import enums.Cards;
+/**/
+public class JCardPanel extends JPanel {
+private int m_numberofCards;
+private Cards[] m_cards;
+public JCardPanel(int x, int y, int width, int height)
+{
+
+}
+public void SetCards(Cards[] card)
+{
+if(card == null)
+{
+	m_numberofCards = 0;
+}
+}
+
+
+
+
+}

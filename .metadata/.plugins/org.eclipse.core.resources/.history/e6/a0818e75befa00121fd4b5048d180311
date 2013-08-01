@@ -1,0 +1,44 @@
+package Main;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.util.LinkedList;
+
+import javax.swing.JPanel;
+
+import enums.Cards;
+/**/
+public class JCardPanel extends JPanel {
+private LinkedList m_cards;
+public JCardPanel(int x, int y, int width, int height)
+{
+setBounds(x,y,width,height);
+
+}
+public void SetCards(Cards[] card)
+{
+if(card == null || card.length == 0)
+{
+	m_cards.clear();
+	return;
+}
+
+
+
+}
+@Override
+public void paintComponent(Graphics g)
+{
+if(m_cards.size() == 0)
+	return;
+
+
+
+
+
+
+
+}
+
+
+
+}
