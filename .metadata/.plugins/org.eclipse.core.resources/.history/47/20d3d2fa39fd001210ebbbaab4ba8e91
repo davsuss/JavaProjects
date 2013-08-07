@@ -1,0 +1,6 @@
+package main;
+
+public class JArray {
+private int m_accesstimes;
+private int[] m_array;
+}

@@ -1,0 +1,27 @@
+package main;
+
+import java.util.EventObject;
+
+public class ArrayEvent {
+	private int m_index;
+	private Action m_action;
+	public ArrayEvent(int index,Action a)
+	{
+		
+	}
+	static enum Action{
+	 Set("Set"),
+	 Access("Access");
+	 private String m_val;
+	 public String getString()
+	 {
+	  return m_val;
+	 }
+	 Action(String val)
+	 {
+	  m_val = val; 
+	 }
+	}
+	private static final long serialVersionUID = 2838833215627949420L;
+	
+}

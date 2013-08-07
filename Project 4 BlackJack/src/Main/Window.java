@@ -27,23 +27,27 @@ import enums.Cards;
 public class Window extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1582244068693279479L;
+	private int bet;
 	private JPanel contentPane;
-	private JLabel lblChipCount;
+	private JLabel lblChipTotal;
 	private JButton btnNewHandgiveUp;
 	private JButton btnHit;
+	private JSpinner spnBet;
 	private JButton btnStay;
 	private JPlayer player;
 	private JDealer dealer;
 	JCardPanel PlayerCards;
+	JCardPanel DealerCards;
 	private JDeck deck;
 	
 	
 	
 	private void initWindow()
 	{
+		int bet = 0;
 		setTitle("BlackJack");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 793, 452);
+		setBounds(100, 100, 639, 426);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -60,21 +64,22 @@ public class Window extends JFrame implements ActionListener {
 		lblNewLabel.setBounds(10, 11, 168, 14);
 		panel.add(lblNewLabel);
 		
-		lblChipCount = new JLabel("Chip Count");
-		lblChipCount.setBounds(10, 36, 68, 14);
-		panel.add(lblChipCount);
+		JLabel lblChips = new JLabel("Chip Count");
+		lblChips.setBounds(10, 36, 68, 14);
+		panel.add(lblChips);
 		
 		JLabel lblBet = new JLabel("Bet");
 		lblBet.setBounds(10, 61, 68, 14);
 		panel.add(lblBet);
 		
-		JLabel ChipTotal = new JLabel("0");
-		ChipTotal.setBounds(72, 36, 68, 14);
-		panel.add(ChipTotal);
+		lblChipTotal = new JLabel("0");
+		lblChipTotal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblChipTotal.setBounds(72, 36, 68, 14);
+		panel.add(lblChipTotal);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(72, 58, 78, 20);
-		panel.add(spinner);
+		spnBet = new JSpinner();
+		spnBet.setBounds(72, 58, 78, 20);
+		panel.add(spnBet);
 		
 		JButton btnNewGame = new JButton("New Game");
 		btnNewGame.setBounds(10, 152, 154, 38);
@@ -103,23 +108,34 @@ public class Window extends JFrame implements ActionListener {
 		JButton btnStatistics = new JButton("Statistics");
 		btnStatistics.setBounds(10, 347, 154, 38);
 		contentPane.add(btnStatistics);
+		btnStatistics.addActionListener(this);
 		
 		PlayerCards = new JCardPanel(233, 179, 534, 224);
+		PlayerCards.setBounds(233, 201, 383, 176);
 		contentPane.add(PlayerCards);
-		btnStatistics.addActionListener(this);
+		
+		DealerCards = new JCardPanel(233, 179, 534, 224);
+		DealerCards.setBounds(233, 11, 383, 166);
+		contentPane.add(DealerCards);
+		
 		
 	}
 	private void newGame()
 	{
-	lblChipCount.setText("500");
+	lblChipTotal.setText("500");
 	btnNewHandgiveUp.setEnabled(true);
 	player.setChipCount(500);
 	}
 	private void newHand()
 	{
+		
+	bet = (int) spnBet.getValue();
+	player.setChipCount(player.getChipCount() - bet);
+	lblChipTotal.setText (Integer.toString(player.getChipCount()));
 	btnHit.setEnabled(true);
 	btnStay.setEnabled(true);
 	player.clearHand();
+	dealer.clearHand();
 	player.addCard(deck.getTopCard());
 	player.addCard(deck.getTopCard());
 	dealer.addCard(deck.getTopCard());
@@ -130,12 +146,13 @@ public class Window extends JFrame implements ActionListener {
 	private void updateplayerhand()
 	{
 		
-		PlayerCards.DrawCards(player.getCards());
+		PlayerCards.DrawCards(player.getCards(),true);
 		
 		if(player.getHandScore() > 21)
 		{
 		btnHit.setEnabled(false);
 		btnStay.setEnabled(false);
+		endHand();
 		}
 	}
     private void stay()
@@ -143,13 +160,46 @@ public class Window extends JFrame implements ActionListener {
     btnHit.setEnabled(false);
     btnStay.setEnabled(false);
     updatedealerhand(true);
-    BufferedImage image;
-   
+    System.out.println("\nPrinting dealer hand values");
+    while(dealer.getHandScore() < 17)
+    {
+    System.out.println(dealer.getHandScore() + '\n');
+    dealer.addCard(deck.getTopCard());
+    }
+    updatedealerhand(true);
+    endHand();
     
     }
-	private void updatedealerhand(Boolean reveal)
+	private void endHand()
+	{	
+		updatedealerhand(true);
+		if(player.getHandScore() > 21)
+		{
+		System.out.println("You Lost!");
+		
+		}
+			
+		else if(dealer.getHandScore() > 21)
+		{
+	    System.out.println("You Won!");
+		player.setChipCount(player.getChipCount() + 2*bet);
+		lblChipTotal.setText (Integer.toString(player.getChipCount()));
+		}
+		
+		else if(dealer.getHandScore() > player.getHandScore())
+		{
+			System.out.println("You Lost!");
+		}
+		else
+		{
+			 System.out.println("You Won!");
+			 player.setChipCount(player.getChipCount() + 2*bet);
+				lblChipTotal.setText (Integer.toString(player.getChipCount()));
+		}
+	}
+    private void updatedealerhand(Boolean reveal)
     {
-
+	DealerCards.DrawCards(dealer.getCards(),reveal);	
     }
     public Window() {
 	player= new JPlayer();

@@ -1,0 +1,50 @@
+ //Class: JArray
+/*
+ * Description: A class that represents the gatekeeper for the array to be sorted, this class allows for the tracking of what elements were accessed and the number of accesses. 
+ */
+package main;
+
+import java.util.ArrayList;
+
+public class JArray implements ArrayChangedEventGenerator {
+private int m_accesstimes;
+private int[] m_array;
+private ArrayList<ArrayChangedEventListener> m_listeners;
+
+public JArray()
+{
+m_listeners = new ArrayList<ArrayChangedEventListener>();
+m_array = new int[200];
+int y = 199;
+for(int x = 0; x <199 ; x++){
+	m_array[x] = y;y--; }
+}
+public int getValueAt(int index)
+{
+m_accesstimes++;
+fireArrayChangedEvent(new ArrayChangedEvent(index,ArrayChangedEvent.Action.Access));
+return m_array[index];
+}
+public void setValueat(int index, int value)
+{
+	m_array[index] = value;
+	fireArrayChangedEvent(new ArrayChangedEvent(index,ArrayChangedEvent.Action.Set));
+}
+@Override
+public void addArrayChangedEventListener(ArrayChangedEventListener a) {
+	m_listeners.add(a);
+	
+}
+public void fireArrayChangedEvent(ArrayChangedEvent e)
+{
+	int y = m_listeners.size();
+	if(y == 0)
+		return;
+	for(int x = 0; x < y; x++)
+	{
+	m_listeners.get(x).ArrayChangedEvent(e);
+	}
+	
+}
+
+}

@@ -1,0 +1,9 @@
+package sorting;
+import main.*;
+public class Sorting {
+public static void InsertionSort(JArray array)
+{
+	array.getValueAt(1);
+	array.getValueAt(2);
+}
+}

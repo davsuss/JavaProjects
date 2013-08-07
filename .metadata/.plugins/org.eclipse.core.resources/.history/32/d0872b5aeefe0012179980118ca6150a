@@ -1,0 +1,36 @@
+package main;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import javax.swing.JPanel;
+
+public class GraphPanel extends JPanel {
+private LinkedList<Integer> marked;
+private ArrayList<Integer> m_array;
+public GraphPanel()
+{
+marked = new LinkedList<Integer>();
+setSize(500,1000);
+setBackground(Color.BLACK);
+
+}
+@Override
+public void paint(Graphics g)
+{
+	int NumofElements = 100;
+	int width = 1000/NumofElements;
+	g.setColor(Color.BLACK);
+	g.fillRect(0,0,1000,500);
+	for(int x = 0; x < 100; x++){
+	g.setColor(Color.WHITE);
+	g.fillRect(0+10*x,0,width,500);
+	g.setColor(Color.BLACK);
+	g.drawRect(0+10*x,0,width,500);
+	}
+	
+}
+
+}

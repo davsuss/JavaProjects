@@ -1,0 +1,26 @@
+package sorting;
+import main.*;
+public class Sorting {
+public static void InsertionSort(JArray array)
+{
+	int size = array.getSize();
+	int lowestValue = 0;
+	int valueIndex = 0;
+	int temp = 0;
+	for(int x = 0; x < size; x++)
+		{
+		lowestValue = array.getValueAt(x);
+		valueIndex = x;
+		for(int y = x + 1; y < size; y++){
+			temp =array.getValueAt(y);
+			if(temp < lowestValue)
+			{
+				lowestValue = temp;
+				valueIndex = y;
+			}
+		}
+		array.Swap(x,valueIndex);
+		}
+
+}
+}

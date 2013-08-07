@@ -1,6 +1,0 @@
-package main;
-
-public class UpdateThread extends Thread {
-private Thread updateThread;
-private int updateInterval;
-}

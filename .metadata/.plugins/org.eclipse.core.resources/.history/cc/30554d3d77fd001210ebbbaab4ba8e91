@@ -1,0 +1,17 @@
+package main;
+
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class GraphPanel extends JPanel {
+public GraphPanel()
+{
+setSize(500,500);
+}
+@Override
+public void paint(Graphics g)
+{
+	
+}
+}

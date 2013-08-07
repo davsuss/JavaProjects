@@ -1,0 +1,220 @@
+package Main;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.border.BevelBorder;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+
+import enums.Cards;
+
+public class Window extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1582244068693279479L;
+	private int bet;
+	private JPanel contentPane;
+	private JLabel lblChipTotal;
+	private JButton btnNewHandgiveUp;
+	private JButton btnHit;
+	private JSpinner spnBet;
+	private JButton btnStay;
+	private JPlayer player;
+	private JDealer dealer;
+	JCardPanel PlayerCards;
+	JCardPanel DealerCards;
+	private JDeck deck;
+	
+	
+	
+	private void initWindow()
+	{
+		int bet = 0;
+		setTitle("BlackJack");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 639, 426);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, null, null, null));
+		panel.setBounds(10, 11, 188, 130);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Stats");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 11, 168, 14);
+		panel.add(lblNewLabel);
+		
+		JLabel lblChips = new JLabel("Chip Count");
+		lblChips.setBounds(10, 36, 68, 14);
+		panel.add(lblChips);
+		
+		JLabel lblBet = new JLabel("Bet");
+		lblBet.setBounds(10, 61, 68, 14);
+		panel.add(lblBet);
+		
+		lblChipTotal = new JLabel("0");
+		lblChipTotal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblChipTotal.setBounds(72, 36, 68, 14);
+		panel.add(lblChipTotal);
+		
+		spnBet = new JSpinner();
+		spnBet.setBounds(72, 58, 78, 20);
+		panel.add(spnBet);
+		
+		JButton btnNewGame = new JButton("New Game");
+		btnNewGame.setBounds(10, 152, 154, 38);
+		contentPane.add(btnNewGame);
+		btnNewGame.addActionListener(this);
+		
+		btnHit = new JButton("Hit");
+		btnHit.setEnabled(false);
+		btnHit.setBounds(10, 251, 154, 36);
+		contentPane.add(btnHit);
+		btnHit.addActionListener(this);
+		
+		btnStay = new JButton("Stay");
+		btnStay.setEnabled(false);
+		btnStay.setBounds(10, 298, 154, 38);
+		contentPane.add(btnStay);
+		btnStay.addActionListener(this);
+		
+		btnNewHandgiveUp = new JButton("New Hand/Give Up");
+		btnNewHandgiveUp.setEnabled(false);
+		btnNewHandgiveUp.setBounds(10, 201, 154, 38);
+		contentPane.add(btnNewHandgiveUp);
+		btnNewHandgiveUp.addActionListener(this);
+		
+		
+		JButton btnStatistics = new JButton("Statistics");
+		btnStatistics.setBounds(10, 347, 154, 38);
+		contentPane.add(btnStatistics);
+		btnStatistics.addActionListener(this);
+		
+		PlayerCards = new JCardPanel(233, 179, 534, 224);
+		PlayerCards.setBounds(233, 201, 383, 176);
+		contentPane.add(PlayerCards);
+		
+		DealerCards = new JCardPanel(233, 179, 534, 224);
+		DealerCards.setBounds(233, 11, 383, 166);
+		contentPane.add(DealerCards);
+		
+		
+	}
+	private void newGame()
+	{
+	lblChipTotal.setText("500");
+	btnNewHandgiveUp.setEnabled(true);
+	player.setChipCount(500);
+	}
+	private void newHand()
+	{
+		
+	bet = (int) spnBet.getValue();
+	btnHit.setEnabled(true);
+	btnStay.setEnabled(true);
+	player.clearHand();
+	
+	player.addCard(deck.getTopCard());
+	player.addCard(deck.getTopCard());
+	dealer.addCard(deck.getTopCard());
+	dealer.addCard(deck.getTopCard());
+	updateplayerhand();
+	updatedealerhand(false);
+	}
+	private void updateplayerhand()
+	{
+		
+		PlayerCards.DrawCards(player.getCards(),true);
+		
+		if(player.getHandScore() > 21)
+		{
+		btnHit.setEnabled(false);
+		btnStay.setEnabled(false);
+		
+		}
+	}
+    private void stay()
+    {
+    btnHit.setEnabled(false);
+    btnStay.setEnabled(false);
+    updatedealerhand(true);
+    endHand();
+   
+    
+    }
+	private void endHand()
+	{
+		if(player.getHandScore() > 21)
+		{
+		System.out.println("You Lost!");
+		}
+			
+		if(dealer.getHandScore() > 21)
+		{
+	    System.out.println("You Won!");
+		}
+		
+		if(dealer.getHandScore() > player.getHandScore())
+		{
+			System.out.println("You Lost!");
+		}
+		else
+		{
+			 System.out.println("You Won!");
+		}
+	}
+    private void updatedealerhand(Boolean reveal)
+    {
+	DealerCards.DrawCards(dealer.getCards(),reveal);	
+    }
+    public Window() {
+	player= new JPlayer();
+	dealer = new JDealer();
+	deck = new JDeck(5);
+	initWindow();
+	setVisible(true);
+	
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		System.out.println(arg0.getActionCommand());
+		
+		switch (arg0.getActionCommand()){
+		
+		case "New Game":
+		newGame();
+		break;
+		case "New Hand/Give Up":
+		newHand();
+		break;
+		case "Hit":
+			player.addCard(deck.getTopCard());
+			updateplayerhand();
+		break;
+		case "Stay":
+			stay();
+		break;
+		}
+		
+	}
+}

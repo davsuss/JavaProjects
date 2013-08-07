@@ -1,0 +1,36 @@
+package main;
+
+import java.util.EventObject;
+
+public class ArrayChangedEvent {
+	private static final long serialVersionUID = 2838833215627949420L;
+	private int m_index;
+	private Action m_action;
+	public ArrayChangedEvent(int index,Action a)
+	{
+		m_index = index;
+		m_action = a;
+	}
+	static enum Action{
+	 Set("Set"),
+	 Access("Access");
+	 private String m_val;
+	 public String getString()
+	 {
+	  return m_val;
+	 }
+	 Action(String val)
+	 {
+	  m_val = val; 
+	 }
+	}
+	public int getIndex() 
+	{return m_index;}
+	@Override
+	public String toString() 
+	{
+	String result = "Array Event: " + m_action.toString() + " At " + Integer.toString(m_index);
+	return result;
+	}
+	
+}

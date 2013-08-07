@@ -1,0 +1,14 @@
+package sorting;
+import main.*;
+public class Sorting {
+public static void InsertionSort(JArray array)
+{
+	int size = array.getSize();
+	int temp = 0;
+	for(int x = 0; x < size; x++)
+		for(int y = x; y < size; y++)
+		{
+			
+		}
+}
+}

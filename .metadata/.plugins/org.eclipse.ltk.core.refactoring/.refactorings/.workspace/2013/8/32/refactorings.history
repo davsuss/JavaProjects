@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Sorting Visualizer&apos; to &apos;Project 5 Sorting Visualizer&apos;" description="Rename resource &apos;Sorting Visualizer&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Sorting Visualizer" name="Project 5 Sorting Visualizer" stamp="1375634284711" updateReferences="true"/>
+</session>

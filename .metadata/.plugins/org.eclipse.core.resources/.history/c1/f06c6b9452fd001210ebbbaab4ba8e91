@@ -1,0 +1,25 @@
+package main;
+
+public class JArray {
+private int m_accesstimes;
+private int[] m_array;
+
+public JArray()
+{
+m_array = new int[200];
+int y = 199;
+for(int x = 0; x <199 ; x++){
+	m_array[x] = y;y--; }
+}
+public int getValueAt(int index)
+{
+m_accesstimes++;
+return m_array[index];
+}
+public void setValueat(int index, int value)
+{
+	
+}
+
+
+}

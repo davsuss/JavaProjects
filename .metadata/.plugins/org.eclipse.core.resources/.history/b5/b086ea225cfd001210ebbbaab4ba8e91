@@ -1,0 +1,7 @@
+package main;
+
+interface JSortingMethod {
+static String test = "";
+public void Sort();
+
+}

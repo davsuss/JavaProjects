@@ -1,0 +1,8 @@
+package sorting;
+import main.*;
+public class Sorting {
+static void InsertionSort(JArray array)
+{
+	
+}
+}

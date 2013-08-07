@@ -1,0 +1,52 @@
+package main;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class Application extends JFrame  implements ArrayChangedEventListener{
+
+	private JPanel contentPane;
+	private JArray m_array;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		Application app = new Application();
+		app.setVisible(true);
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Application() {
+		m_array = new JArray(100);
+		m_array.addArrayChangedEventListener(this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1005, 530);
+		//setResizable(false);
+		contentPane = new JPanel();
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		GraphPanel Gpanel = new GraphPanel(m_array.getArray());
+		add(Gpanel);
+		Gpanel.mark(2);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Gpanel.mark(3);
+	}
+
+	@Override
+	public void ArrayChangedEvent(ArrayChangedEvent e) {
+	
+		
+	}
+
+}

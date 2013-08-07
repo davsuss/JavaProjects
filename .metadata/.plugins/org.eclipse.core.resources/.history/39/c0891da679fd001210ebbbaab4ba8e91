@@ -1,0 +1,24 @@
+package main;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+
+public class GraphPanel extends JPanel {
+private ArrayList<int> marked;
+public GraphPanel()
+{
+marked = new ArrayList<int>;
+setSize(500,500);
+setBackground(Color.BLACK);
+
+}
+@Override
+public void paint(Graphics g)
+{
+	
+}
+
+}

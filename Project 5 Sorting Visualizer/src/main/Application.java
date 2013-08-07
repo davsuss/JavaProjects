@@ -1,0 +1,70 @@
+package main;
+import sorting.*;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class Application extends JFrame  implements ArrayChangedEventListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4272053762199549912L;
+	static void Sleep(int miliseconds)
+	{
+		try {
+			Thread.sleep(miliseconds);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private JPanel contentPane;
+	private JArray m_array;
+	private GraphPanel Gpanel;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		Application app = new Application();
+		app.setVisible(true);
+		Sorting.InsertionSort(app.getArray());
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Application() {
+		m_array = new JArray(100);
+		m_array.addArrayChangedEventListener(this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1005, 530);
+		//setResizable(false);
+		contentPane = new JPanel();
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		Gpanel = new GraphPanel(m_array.getArray());
+		add(Gpanel);
+		Gpanel.mark(0);
+		
+	}
+
+	@Override
+	public void ArrayChangedEvent(ArrayChangedEvent e) {
+		Gpanel.mark(-1);
+		Gpanel.mark(e.getIndex());
+		Application.Sleep(40);
+	
+		
+	}
+
+	public JArray getArray() 
+	{
+	return m_array;
+	}
+
+}

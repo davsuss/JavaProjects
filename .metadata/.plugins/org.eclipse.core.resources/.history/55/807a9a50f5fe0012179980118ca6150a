@@ -1,0 +1,8 @@
+package sorting;
+
+public class Sorting {
+static void InsertionSort(Jarray array)
+{
+	
+}
+}

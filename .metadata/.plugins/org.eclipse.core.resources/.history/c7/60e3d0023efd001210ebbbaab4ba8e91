@@ -1,0 +1,20 @@
+package main;
+
+public class JArray {
+private int m_accesstimes;
+private int[] m_array;
+
+public JArray()
+{
+m_array = new int[200];
+for(x = 200; x >0 ; x++)
+}
+public int getValueAt(int index)
+{
+m_accesstimes++;
+return m_array[index];
+}
+
+
+
+}
