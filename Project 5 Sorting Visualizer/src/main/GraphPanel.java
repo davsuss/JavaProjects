@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ public GraphPanel(ArrayList<Integer> array)
 {
 m_array = array;
 m_marked = new LinkedList<Integer>();
+setMinimumSize(new Dimension(1000,500));
 setSize(500,1000);
 setBackground(Color.BLACK);
 
@@ -23,15 +25,15 @@ public void paint(Graphics g)
 {
 	int NumofElements = m_array.size();
 	int width = 1000/NumofElements;
-	g.setColor(Color.BLACK);
+	g.setColor(Color.DARK_GRAY);
 	g.fillRect(0,0,1000,500);
 	for(int x = 0; x < NumofElements; x++){
 	boolean marked = m_marked.contains(x);
 	double ratio = m_array.get(x);ratio /= 100;
 	if(!marked) g.setColor(Color.WHITE); else g.setColor(Color.RED);
-	g.fillRect(0+10*x,500 -((int) (500*ratio)) ,width,(int) (500*ratio));
+	g.fillRect(0+10*x,500 -((int) (500*(ratio+.008)+4)) ,width,(int) ((500*(ratio+.008)) +4));
 	g.setColor(Color.BLACK);
-	g.drawRect(0+10*x,500 -((int) (500*ratio)) ,width,(int) (500*ratio));
+	g.drawRect(0+10*x,500 -((int) (500*(ratio+.008)+4)) ,width,(int) ((500*(ratio+.008)) +4));
 	}
 	
 }

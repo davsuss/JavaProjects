@@ -1,6 +1,8 @@
 package main;
 import sorting.*;
+
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,8 +10,11 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
 
-public class Application extends JFrame  implements ArrayChangedEventListener{
+import java.awt.Color;
+
+public class Application extends JFrame  implements ArrayChangedEventListener, KeyListener{
 	/**
 	 * 
 	 */
@@ -32,7 +37,7 @@ public class Application extends JFrame  implements ArrayChangedEventListener{
 	public static void main(String[] args) {
 		Application app = new Application();
 		app.setVisible(true);
-		Sorting.InsertionSort(app.getArray());
+		Sorting.GnomeSort(app.getArray());
 	}
 
 	/**
@@ -42,14 +47,18 @@ public class Application extends JFrame  implements ArrayChangedEventListener{
 		m_array = new JArray(100);
 		m_array.addArrayChangedEventListener(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1005, 530);
+		
 		//setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		Gpanel = new GraphPanel(m_array.getArray());
-		add(Gpanel);
+		getContentPane().add(Gpanel);
+		Gpanel.setLayout(null);
 		Gpanel.mark(0);
+		setBounds(100, 100, 1016, 538);
+		//setMinimumSize(new Dimension(1000,500));
+		addKeyListener(this);
 		
 	}
 
@@ -57,7 +66,7 @@ public class Application extends JFrame  implements ArrayChangedEventListener{
 	public void ArrayChangedEvent(ArrayChangedEvent e) {
 		Gpanel.mark(-1);
 		Gpanel.mark(e.getIndex());
-		Application.Sleep(40);
+		Application.Sleep(1);
 	
 		
 	}
@@ -67,4 +76,23 @@ public class Application extends JFrame  implements ArrayChangedEventListener{
 	return m_array;
 	}
 
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+	Dimension a =contentPane.getSize();
+		System.out.println(a.getWidth() + " " + a.getHeight());
+	
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }

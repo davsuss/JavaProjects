@@ -1,0 +1,125 @@
+package sorting;
+import java.util.Random;
+
+import main.*;
+public class Sorting {
+public static void InsertionSort(JArray array)
+{
+	int size = array.getSize();
+	int lowestValue = 0;
+	int valueIndex = 0;
+	int temp = 0;
+	for(int x = 0; x < size; x++)
+		{
+		lowestValue = array.getValueAt(x);
+		valueIndex = x;
+		for(int y = x + 1; y < size; y++){
+			temp =array.getValueAt(y);
+			if(temp < lowestValue)
+			{
+				lowestValue = temp;
+				valueIndex = y;
+			}
+		}
+		array.Swap(x,valueIndex);
+		}
+
+}
+public static void BubbleSort(JArray array)
+{
+int size = array.getSize();
+for(int x = size; x > 0; x--)
+{
+for(int y = 0; y < (x-1); y++)
+{
+if(array.getValueAt(y) > array.getValueAt(y+1))
+	array.Swap(y,y+1);
+}
+}
+}
+public static void GnomeSort(JArray array)
+{
+	int size = array.getSize();
+	int index = 1; 
+	while(index < size)
+	{
+		if(array.getValueAt(index -1) <=array.getValueAt(index))
+			index++;
+		else
+		{
+		array.Swap(index-1,index);
+		if(index > 1)
+			index--;
+		}
+		
+		
+		
+	}
+}
+public static void QuickSort(JArray array)
+{
+int left = 0;
+int right = 100;
+QuickS(array,left,right);
+
+
+}
+private static void QuickS(JArray array,int left, int right)
+{
+if(left < right)
+{
+	Random rand = new Random();
+int pivot = rand.nextInt(right - left + 1) + left; 
+System.out.println(pivot);
+//int pivot = (left + right)/2;
+int newpivot = QuickPart(array,left,right,pivot);
+QuickS(array,left,newpivot-1);
+QuickS(array,newpivot+1,right);
+}
+}
+private static int QuickPart(JArray array,int left,int right,int pivot)
+{
+	int pivotValue = array.getValueAt(pivot);
+	int tempIndex = left;
+	array.Swap(pivot,array.getSize()-1);
+	for(int x = left ; x < right-1; x++ )
+	{
+		if(array.getValueAt(x) < pivotValue)
+		{
+			array.Swap(x,tempIndex);
+			tempIndex++;
+		}
+	}
+	array.Swap(tempIndex,right);
+	return tempIndex;
+}
+public static void MergeSort(JArray array)
+{
+	
+}
+private static void MergeSplit(JArray array, int indexA, int indexB)
+{
+	
+}
+private static void Merge(JArray array, int indexA1, int indexA2, int indexB1, int indexB2)
+{
+	
+while(indexA1 <= indexA2 && indexB1 <= indexB2)
+{
+if(array.getValueAt(indexA1) <= array.getValueAt(indexA2))
+{
+	
+	
+indexA1++;
+}
+if(array.getValueAt(indexA1) >= array.getValueAt(indexA2))
+{
+	
+	
+indexB1++;
+}
+}
+	
+
+}
+}
